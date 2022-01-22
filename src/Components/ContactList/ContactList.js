@@ -1,9 +1,17 @@
-import { Component } from "react";
+import { Fragment } from "react";
+import { nanoid } from "nanoid";
+import ContactItem from "Components/ContactItem";
 
-class ContactList extends Component {
-    state = {}   
-    render() {
-        return <div></div>
-    }
+function ContactList({ contacts }) {
+  return (
+    <Fragment>
+      <h2>Contacts</h2>
+      <ul>
+        {contacts.map((contact) => (
+          <ContactItem contact={contact} key={nanoid()} />
+        ))}
+      </ul>
+    </Fragment>
+  );
 }
 export default ContactList;

@@ -1,9 +1,4 @@
-import { Component } from "react";
-
-class ContactItem extends Component {
-    state = {}   
-    render() {
-        return <div></div>
-    }
+function ContactItem({ contact }) {
+  return <li>{contact}</li>;
 }
 export default ContactItem;
