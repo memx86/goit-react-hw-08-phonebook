@@ -9,9 +9,9 @@ class App extends Component {
     contacts: [],
     filter: "",
   };
-  addContact = (name) => {
+  addContact = (contact) => {
     const { contacts } = this.state;
-    this.setState(() => ({ contacts: [...contacts, name] }));
+    this.setState(() => ({ contacts: [...contacts, contact] }));
   };
 
   render() {

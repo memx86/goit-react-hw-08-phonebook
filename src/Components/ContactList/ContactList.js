@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { nanoid } from "nanoid";
 import ContactItem from "Components/ContactItem";
 
 function ContactList({ contacts }) {
@@ -7,8 +6,8 @@ function ContactList({ contacts }) {
     <Fragment>
       <h2>Contacts</h2>
       <ul>
-        {contacts.map((contact) => (
-          <ContactItem contact={contact} key={nanoid()} />
+        {contacts.map(({ id, name, number }) => (
+          <ContactItem name={name} number={number} key={id} />
         ))}
       </ul>
     </Fragment>
