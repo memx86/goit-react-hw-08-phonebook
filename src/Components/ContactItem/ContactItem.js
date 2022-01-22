@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function ContactItem({ name, number }) {
   return (
     <li>
@@ -6,4 +8,8 @@ function ContactItem({ name, number }) {
     </li>
   );
 }
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};
 export default ContactItem;
