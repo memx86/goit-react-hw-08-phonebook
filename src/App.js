@@ -1,4 +1,5 @@
 import { Component, Fragment } from "react";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 import Section from "Components/Section";
 import Container from "Components/Container";
 import ContactForm from "Components/ContactForm";
@@ -16,11 +17,16 @@ class App extends Component {
     filter: "",
   };
   addContact = (contact) => {
-    const { contacts } = this.state;
-    this.setState(() => ({ contacts: [...contacts, contact] }));
+    this.setState(({ contacts }) => ({ contacts: [...contacts, contact] }));
+  };
+  removeContact = (e) => {
+    const name = e.target.dataset.name;
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter((contact) => contact.name !== name),
+    }));
+    Notify.info(`${name} was removed from contacts`);
   };
   getNames = () => this.state.contacts.map((contact) => contact.name);
-
   setFilterState = (value) => this.setState(() => ({ filter: value }));
   filterContacts = () => {
     const contacts = this.state.contacts;
@@ -48,7 +54,10 @@ class App extends Component {
           <Container>
             <h2>Contacts</h2>
             <Filter setFilter={this.setFilterState} />
-            <ContactList contacts={contacts} />
+            <ContactList
+              contacts={contacts}
+              removeContact={this.removeContact}
+            />
           </Container>
         </Section>
       </Fragment>

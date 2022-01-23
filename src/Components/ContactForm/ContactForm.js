@@ -28,7 +28,7 @@ class ContactForm extends Component {
       return;
     }
     onFormSubmit({ id, name, number });
-    Notify.success(`${name} added to contacts!`);
+    Notify.success(`${name} was added to contacts`);
     this.reset();
   };
   reset = () =>
