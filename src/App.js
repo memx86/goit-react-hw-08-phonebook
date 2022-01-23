@@ -1,5 +1,6 @@
 import { Component, Fragment } from "react";
-import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import Section from "Components/Section";
 import Container from "Components/Container";
 import ContactForm from "Components/ContactForm";
@@ -24,7 +25,7 @@ class App extends Component {
     this.setState((prevState) => ({
       contacts: prevState.contacts.filter((contact) => contact.name !== name),
     }));
-    Notify.info(`${name} was removed from contacts`);
+    toast.info(`${name} was removed from contacts`);
   };
   getNames = () => this.state.contacts.map((contact) => contact.name);
   setFilterState = (value) => this.setState(() => ({ filter: value }));
@@ -60,6 +61,17 @@ class App extends Component {
             />
           </Container>
         </Section>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </Fragment>
     );
   }

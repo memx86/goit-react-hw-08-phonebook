@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
-import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
 class ContactForm extends Component {
@@ -24,11 +24,11 @@ class ContactForm extends Component {
     const name = e.target.name.value;
     const number = e.target.number.value;
     if (names.includes(name)) {
-      Notify.failure(`${name} is already in contacts!`);
+      toast.error(`${name} is already in contacts!`);
       return;
     }
     onFormSubmit({ id, name, number });
-    Notify.success(`${name} was added to contacts`);
+    toast.success(`${name} was added to contacts`);
     this.reset();
   };
   reset = () =>
