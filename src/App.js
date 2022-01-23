@@ -19,6 +19,8 @@ class App extends Component {
     const { contacts } = this.state;
     this.setState(() => ({ contacts: [...contacts, contact] }));
   };
+  getNames = () => this.state.contacts.map((contact) => contact.name);
+
   setFilterState = (value) => this.setState(() => ({ filter: value }));
   filterContacts = () => {
     const contacts = this.state.contacts;
@@ -29,6 +31,7 @@ class App extends Component {
   };
   render() {
     const contacts = this.filterContacts();
+    const names = this.getNames();
     return (
       <Fragment>
         <Section>
@@ -38,7 +41,7 @@ class App extends Component {
         </Section>
         <Section>
           <Container>
-            <ContactForm onFormSubmit={this.addContact} />
+            <ContactForm names={names} onFormSubmit={this.addContact} />
           </Container>
         </Section>
         <Section>
