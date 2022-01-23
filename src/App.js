@@ -2,6 +2,7 @@ import { Component, Fragment } from "react";
 import Section from "Components/Section";
 import Container from "Components/Container";
 import ContactForm from "Components/ContactForm";
+import Filter from "Components/Filter";
 import ContactList from "Components/ContactList";
 
 class App extends Component {
@@ -42,7 +43,9 @@ class App extends Component {
         </Section>
         <Section>
           <Container>
-            <ContactList contacts={contacts} setFilter={this.setFilterState} />
+            <h2>Contacts</h2>
+            <Filter setFilter={this.setFilterState} />
+            <ContactList contacts={contacts} />
           </Container>
         </Section>
       </Fragment>
