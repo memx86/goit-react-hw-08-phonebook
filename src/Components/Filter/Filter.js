@@ -28,6 +28,7 @@ class Filter extends Component {
           <input
             className={s.input}
             type="text"
+            placeholder=" "
             value={filter}
             onChange={this.handleChange}
           />
