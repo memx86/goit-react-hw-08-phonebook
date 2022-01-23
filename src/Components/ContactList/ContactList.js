@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 import PropTypes from "prop-types";
 import ContactItem from "Components/ContactItem";
+import s from "./ContactList.module.css";
 
 function ContactList({ contacts, removeContact }) {
   return (
     <Fragment>
-      <ul>
+      <ul className={s.list}>
         {contacts.map(({ id, name, number }) => (
           <ContactItem
             name={name}

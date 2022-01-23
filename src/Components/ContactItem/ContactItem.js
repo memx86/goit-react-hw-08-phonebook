@@ -7,7 +7,12 @@ function ContactItem({ name, number, removeContact }) {
       <p>
         {name}: {number}
       </p>
-      <button type="button" onClick={removeContact} data-name={name}>
+      <button
+        className={s.btn}
+        type="button"
+        onClick={removeContact}
+        data-name={name}
+      >
         Delete
       </button>
     </li>
