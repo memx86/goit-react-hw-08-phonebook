@@ -12,7 +12,6 @@ class Filter extends Component {
   };
   handleChange = (e) => {
     const { setFilter } = this.props;
-    console.log(setFilter);
     const value = e.target.value;
     this.setState(() => ({
       filter: value,
