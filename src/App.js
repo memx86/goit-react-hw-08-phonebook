@@ -1,11 +1,11 @@
 import { Component, Fragment } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-import Section from "Components/Section";
-import Container from "Components/Container";
-import ContactForm from "Components/ContactForm";
-import Filter from "Components/Filter";
-import ContactList from "Components/ContactList";
+import Section from "components/Section";
+import Container from "components/Container";
+import ContactForm from "components/ContactForm";
+import Filter from "components/Filter";
+import ContactList from "components/ContactList";
 
 class App extends Component {
   state = {
