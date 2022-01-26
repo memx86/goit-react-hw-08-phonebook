@@ -1,0 +1,22 @@
+.filter {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.label {
+  width: 100%;
+  font-size: 1.5rem;
+}
+.input {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  min-width: 200px;
+  width: 50%;
+  border: 1px solid #0080ff;
+  border-radius: 10px;
+}
+.input:focus,
+.input:not(:placeholder-shown) {
+  border: 2px solid #0080ff;
+  outline: none;
+}
