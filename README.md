@@ -1,3 +1,3 @@
-# goit-react-hw-03-phonebook
+# goit-react-hw-04-phonebook
 
-React homework 03 https://memx86.github.io/goit-react-hw-03-phonebook/
+React homework 04 https://memx86.github.io/goit-react-hw-04-phonebook/
