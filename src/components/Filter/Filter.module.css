@@ -14,9 +14,10 @@
   width: 50%;
   border: 1px solid #0080ff;
   border-radius: 10px;
+  transition: border-color 250ms linear;
 }
 .input:focus,
 .input:not(:placeholder-shown) {
-  border: 2px solid #0080ff;
-  outline: none;
+  border-color: #0080ff;
+  outline: 1px solid #0080ff;
 }
