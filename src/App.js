@@ -19,9 +19,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
-  const addContact = (contact) => {
-    setContacts((contacts) => [...contacts, contact]);
-  };
+  // const addContact = (contact) => {
+  //   setContacts((contacts) => [...contacts, contact]);
+  // };
   const removeContact = (e) => {
     const name = e.target.dataset.name;
     setContacts((contacts) =>
@@ -29,7 +29,7 @@ function App() {
     );
     toast.info(`${name} was removed from contacts`);
   };
-  const getNames = () => contacts.map((contact) => contact.name);
+  // const getNames = () => contacts.map((contact) => contact.name);
   const filterContacts = () => {
     const filterValue = filter.toLowerCase().trim();
     return contacts.filter((contact) =>
@@ -37,7 +37,7 @@ function App() {
     );
   };
   const finalContacts = filterContacts();
-  const names = getNames();
+  // const names = getNames();
   return (
     <Fragment>
       <Section>
@@ -47,7 +47,8 @@ function App() {
       </Section>
       <Section>
         <Container>
-          <ContactForm names={names} onFormSubmit={addContact} />
+          {/* <ContactForm names={names} onFormSubmit={addContact} /> */}
+          <ContactForm />
         </Container>
       </Section>
       <Section>
