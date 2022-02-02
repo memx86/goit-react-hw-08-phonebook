@@ -1,26 +1,19 @@
 import { Fragment } from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import ContactItem from "components/ContactItem";
+import { filterContacts } from "redux/contacts/contacts-selectors";
 import s from "./ContactList.module.css";
 
-function ContactList({ contacts, removeContact }) {
+function ContactList() {
+  const contacts = useSelector(filterContacts);
   return (
     <Fragment>
       <ul className={s.list}>
         {contacts.map(({ id, name, number }) => (
-          <ContactItem
-            name={name}
-            number={number}
-            removeContact={removeContact}
-            key={id}
-          />
+          <ContactItem name={name} number={number} key={id} />
         ))}
       </ul>
     </Fragment>
   );
 }
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeContact: PropTypes.func.isRequired,
-};
 export default ContactList;

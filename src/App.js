@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Section from "components/Section";
 import Container from "components/Container";
@@ -9,7 +9,7 @@ import ContactList from "components/ContactList";
 
 function App() {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [, setFilter] = useState("");
   useEffect(() => {
     try {
       const localContacts = JSON.parse(localStorage.getItem("contacts"));
@@ -19,25 +19,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
-  // const addContact = (contact) => {
-  //   setContacts((contacts) => [...contacts, contact]);
-  // };
-  const removeContact = (e) => {
-    const name = e.target.dataset.name;
-    setContacts((contacts) =>
-      contacts.filter((contact) => contact.name !== name)
-    );
-    toast.info(`${name} was removed from contacts`);
-  };
-  // const getNames = () => contacts.map((contact) => contact.name);
-  const filterContacts = () => {
-    const filterValue = filter.toLowerCase().trim();
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filterValue)
-    );
-  };
-  const finalContacts = filterContacts();
-  // const names = getNames();
+
   return (
     <Fragment>
       <Section>
@@ -47,7 +29,6 @@ function App() {
       </Section>
       <Section>
         <Container>
-          {/* <ContactForm names={names} onFormSubmit={addContact} /> */}
           <ContactForm />
         </Container>
       </Section>
@@ -55,7 +36,7 @@ function App() {
         <Container>
           <h2>Contacts</h2>
           <Filter handleFilter={setFilter} />
-          <ContactList contacts={finalContacts} removeContact={removeContact} />
+          <ContactList />
         </Container>
       </Section>
       <ToastContainer

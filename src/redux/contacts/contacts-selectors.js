@@ -7,8 +7,8 @@ export const getNames = (state) =>
 export const filterContacts = (state) => {
   const contacts = getContacts(state);
   const filter = getFilter(state);
+  if (!filter) return contacts;
   const filterValue = filter.toLowerCase().trim();
-
   return contacts.filter(({ text }) =>
     text.toLowerCase().includes(filterValue)
   );
