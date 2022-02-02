@@ -12,10 +12,12 @@ export const contactsSlice = createSlice({
     remove: (state, { payload }) => {
       state.items = state.items.filter((contact) => contact.name !== payload);
     },
-    filter: (_, { payload }) => payload,
+    changeFilter: (state, { payload }) => {
+      state.filter = payload;
+    },
   },
 });
 
-export const { add, remove } = contactsSlice.actions;
+export const { add, remove, changeFilter } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
