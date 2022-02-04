@@ -6,15 +6,18 @@ export const contactsSlice = createSlice({
     filter: "",
   },
   reducers: {
-    add: (state, { payload }) => {
-      state.items = [...state.items, payload];
-    },
-    remove: (state, { payload }) => {
-      state.items = state.items.filter((contact) => contact.name !== payload);
-    },
-    changeFilter: (state, { payload }) => {
-      state.filter = payload;
-    },
+    add: (state, { payload }) => ({
+      ...state,
+      items: [...state.items, payload],
+    }),
+    remove: (state, { payload }) => ({
+      ...state,
+      items: state.items.filter((contact) => contact.name !== payload),
+    }),
+    changeFilter: (state, { payload }) => ({
+      ...state,
+      filter: payload,
+    }),
   },
 });
 
