@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { changeFilter } from "redux/contacts/contacts-slice";
-import { contactsActions } from "redux/contacts";
+import { changeFilter } from "redux/contacts";
 import s from "./Filter.module.css";
 
 function Filter() {
@@ -10,7 +9,7 @@ function Filter() {
   const handleChange = (e) => {
     const value = e.target.value;
     setFilter(value);
-    dispatch(contactsActions.changeFilter(value));
+    dispatch(changeFilter(value));
   };
 
   return (

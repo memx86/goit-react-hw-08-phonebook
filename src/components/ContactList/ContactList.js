@@ -1,16 +1,16 @@
 import { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ContactItem from "components/ContactItem";
-import { contactsOperations, contactsSelectors } from "redux/contacts";
+import { fetchContacts, filterContacts } from "redux/contacts";
 import s from "./ContactList.module.css";
 
 function ContactList() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(contactsOperations.getContacts());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
-  const contacts = useSelector(contactsSelectors.filterContacts);
+  const contacts = useSelector(filterContacts);
   return (
     <Fragment>
       <ul className={s.list}>

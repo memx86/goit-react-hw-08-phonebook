@@ -1,8 +1,7 @@
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
-// import { remove } from "redux/contacts/contacts-slice";
-import { removeContact } from "redux/contacts/contacts-operations";
+import { removeContact } from "redux/contacts";
 import s from "./ContactItem.module.css";
 
 function ContactItem({ name, phone, id }) {
