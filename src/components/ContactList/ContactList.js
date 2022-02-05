@@ -15,8 +15,8 @@ function ContactList() {
     <Fragment>
       <ul className={s.list}>
         {contacts.length > 0 &&
-          contacts.map(({ id, name, number }) => (
-            <ContactItem name={name} number={number} id={id} key={id} />
+          contacts.map(({ id, name, phone }) => (
+            <ContactItem name={name} phone={phone} id={id} key={id} />
           ))}
       </ul>
     </Fragment>

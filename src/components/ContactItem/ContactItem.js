@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { removeContact } from "redux/contacts/contacts-operations";
 import s from "./ContactItem.module.css";
 
-function ContactItem({ name, number, id }) {
+function ContactItem({ name, phone, id }) {
   const dispatch = useDispatch();
   const onRemoveContact = (e) => {
     const name = e.target.dataset.name;
@@ -16,7 +16,7 @@ function ContactItem({ name, number, id }) {
   return (
     <li className={s.item}>
       <p>
-        {name}: {number}
+        {name}: {phone}
       </p>
       <button
         className={s.btn}
@@ -32,6 +32,6 @@ function ContactItem({ name, number, id }) {
 }
 ContactItem.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
 };
 export default ContactItem;
