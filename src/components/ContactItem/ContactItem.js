@@ -7,8 +7,7 @@ import s from "./ContactItem.module.css";
 
 function ContactItem({ name, phone, id }) {
   const dispatch = useDispatch();
-  const onRemoveContact = (e) => {
-    const name = e.target.dataset.name;
+  const onRemoveContact = () => {
     dispatch(removeContact(id));
     toast.info(`${name} was removed from contacts`);
   };
@@ -17,12 +16,7 @@ function ContactItem({ name, phone, id }) {
       <p>
         {name}: {phone}
       </p>
-      <button
-        className={s.btn}
-        type="button"
-        onClick={onRemoveContact}
-        data-name={name}
-      >
+      <button className={s.btn} type="button" onClick={onRemoveContact}>
         Delete
       </button>
     </li>
