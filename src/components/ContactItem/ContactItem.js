@@ -1,14 +1,16 @@
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
-import { remove } from "redux/contacts/contacts-slice";
+// import { remove } from "redux/contacts/contacts-slice";
+import { removeContact } from "redux/contacts/contacts-operations";
 import s from "./ContactItem.module.css";
 
-function ContactItem({ name, number }) {
+function ContactItem({ name, number, id }) {
   const dispatch = useDispatch();
-  const removeContact = (e) => {
+  const onRemoveContact = (e) => {
     const name = e.target.dataset.name;
-    dispatch(remove(name));
+    const id = e.target.dataset.id;
+    dispatch(removeContact(id));
     toast.info(`${name} was removed from contacts`);
   };
   return (
@@ -19,8 +21,9 @@ function ContactItem({ name, number }) {
       <button
         className={s.btn}
         type="button"
-        onClick={removeContact}
+        onClick={onRemoveContact}
         data-name={name}
+        data-id={id}
       >
         Delete
       </button>

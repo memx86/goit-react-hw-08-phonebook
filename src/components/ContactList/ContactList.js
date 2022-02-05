@@ -1,17 +1,23 @@
-import { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ContactItem from "components/ContactItem";
-import { filterContacts } from "redux/contacts/contacts-selectors";
+import { contactsOperations, contactsSelectors } from "redux/contacts";
 import s from "./ContactList.module.css";
 
 function ContactList() {
-  const contacts = useSelector(filterContacts);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(contactsOperations.getContacts());
+  }, [dispatch]);
+
+  const contacts = useSelector(contactsSelectors.filterContacts);
   return (
     <Fragment>
       <ul className={s.list}>
-        {contacts.map(({ id, name, number }) => (
-          <ContactItem name={name} number={number} key={id} />
-        ))}
+        {contacts.length > 0 &&
+          contacts.map(({ id, name, number }) => (
+            <ContactItem name={name} number={number} id={id} key={id} />
+          ))}
       </ul>
     </Fragment>
   );
