@@ -9,7 +9,6 @@ function ContactItem({ name, phone, id }) {
   const dispatch = useDispatch();
   const onRemoveContact = (e) => {
     const name = e.target.dataset.name;
-    const id = e.target.dataset.id;
     dispatch(removeContact(id));
     toast.info(`${name} was removed from contacts`);
   };
@@ -23,7 +22,6 @@ function ContactItem({ name, phone, id }) {
         type="button"
         onClick={onRemoveContact}
         data-name={name}
-        data-id={id}
       >
         Delete
       </button>
