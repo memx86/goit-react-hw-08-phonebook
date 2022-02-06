@@ -1,13 +1,12 @@
-import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
-import { removeContact } from "redux/contacts";
+import { useRemoveContactMutation } from "redux/contacts";
 import s from "./ContactItem.module.css";
 
 function ContactItem({ name, phone, id }) {
-  const dispatch = useDispatch();
+  const [removeContact] = useRemoveContactMutation();
   const onRemoveContact = () => {
-    dispatch(removeContact(id));
+    removeContact(id);
     toast.info(`${name} was removed from contacts`);
   };
   return (

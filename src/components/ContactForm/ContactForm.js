@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { useAddContactMutation, useFetchContactsQuery } from "redux/contacts";
 import s from "./ContactForm.module.css";
-import { getNames } from "redux/contacts";
-import { addContact } from "redux/contacts";
 
 function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const dispatch = useDispatch();
-  const names = useSelector(getNames);
+  const { data } = useFetchContactsQuery();
+  const names = data?.map((contact) => contact.name);
+  const [addContact] = useAddContactMutation();
   const handleInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -32,7 +31,7 @@ function ContactForm() {
       toast.error(`${name} is already in contacts!`);
       return;
     }
-    dispatch(addContact({ name, phone }));
+    addContact({ name, phone });
     toast.success(`${name} was added to contacts`);
     reset();
   };
