@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Navbar from "components/Navbar";
+import Home from "views/Home";
 import Contacts from "views/Contacts";
 import Add from "views/Add";
 import Login from "views/Login";
@@ -13,6 +14,7 @@ function App() {
     <Fragment>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="contacts" element={<Contacts />} />
         <Route path="add" element={<Add />} />
         <Route path="login" element={<Login />} />
