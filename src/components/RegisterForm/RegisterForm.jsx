@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "redux/auth";
-import { auth } from "redux/auth";
+import { token, loggedIn } from "redux/auth";
 import s from "./RegisterForm.module.css";
 function RegisterForm() {
   const [name, setName] = useState("");
@@ -32,7 +32,10 @@ function RegisterForm() {
     e.preventDefault();
     register({ name, email, password })
       .unwrap()
-      .then((data) => dispatch(auth(data)));
+      .then((data) => {
+        dispatch(token(data));
+        dispatch(loggedIn());
+      });
     resetForm();
     navigate("/contacts");
   };

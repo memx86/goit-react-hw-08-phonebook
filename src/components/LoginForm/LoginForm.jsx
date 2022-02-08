@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "redux/auth";
-import { auth } from "redux/auth";
+import { token, loggedIn } from "redux/auth";
 import s from "./LoginForm.module.css";
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -28,7 +28,10 @@ function LoginForm() {
     e.preventDefault();
     login({ email, password })
       .unwrap()
-      .then((data) => dispatch(auth(data)));
+      .then((data) => {
+        dispatch(token(data));
+        dispatch(loggedIn());
+      });
     resetForm();
     navigate("/contacts");
   };
