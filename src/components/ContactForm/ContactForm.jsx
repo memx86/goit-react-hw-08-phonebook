@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import { useAddContactMutation, useFetchContactsQuery } from "redux/contacts";
 import s from "./ContactForm.module.css";
 
 function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const navigate = useNavigate();
   const { data } = useFetchContactsQuery();
   const names = data?.map((contact) => contact.name);
   const [addContact] = useAddContactMutation();
@@ -34,6 +36,7 @@ function ContactForm() {
     addContact({ name, phone });
     toast.success(`${name} was added to contacts`);
     reset();
+    navigate("/contacts");
   };
 
   const reset = () => {
