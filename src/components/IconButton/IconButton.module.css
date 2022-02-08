@@ -1,0 +1,10 @@
+.btn {
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 250ms linear;
+}
+.btn:hover,
+.btn:focus {
+  transform: scale(1.2);
+}

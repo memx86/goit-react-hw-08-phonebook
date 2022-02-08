@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { useRemoveContactMutation } from "redux/contacts";
+import IconButton from "components/IconButton";
 import s from "./ContactItem.module.css";
 
 function ContactItem({ name, phone, id }) {
@@ -14,9 +15,7 @@ function ContactItem({ name, phone, id }) {
       <p>
         {name}: {phone}
       </p>
-      <button className={s.btn} type="button" onClick={onRemoveContact}>
-        Delete
-      </button>
+      <IconButton icon="del" onClick={onRemoveContact} />
     </li>
   );
 }
