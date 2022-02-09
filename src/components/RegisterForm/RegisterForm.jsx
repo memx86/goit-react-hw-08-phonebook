@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useRegisterMutation } from "redux/auth";
-import { token, loggedIn } from "redux/auth";
+import { useRegisterMutation, token, loggedIn } from "redux/auth";
+import { useFetchContactsQuery } from "redux/contacts";
 import s from "./RegisterForm.module.css";
 function RegisterForm() {
   const [name, setName] = useState("");
@@ -10,6 +10,7 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [register] = useRegisterMutation();
+  const { refetch } = useFetchContactsQuery();
   const dispatch = useDispatch();
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -28,16 +29,16 @@ function RegisterForm() {
         return;
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    register({ name, email, password })
-      .unwrap()
-      .then((data) => {
-        dispatch(token(data));
-        dispatch(loggedIn());
-      });
-    resetForm();
-    navigate("/contacts");
+    try {
+      const data = await register({ name, email, password }).unwrap();
+      dispatch(token(data));
+      dispatch(loggedIn());
+      refetch();
+      resetForm();
+      navigate("/contacts");
+    } catch (error) {}
   };
 
   const resetForm = () => {

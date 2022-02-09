@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation } from "redux/auth";
-import { token, loggedIn } from "redux/auth";
+import { useLoginMutation, token, loggedIn } from "redux/auth";
+import { useFetchContactsQuery } from "redux/contacts";
 import s from "./LoginForm.module.css";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [login] = useLoginMutation();
+  const { refetch } = useFetchContactsQuery();
   const dispatch = useDispatch();
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -24,16 +25,16 @@ function LoginForm() {
         return;
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login({ email, password })
-      .unwrap()
-      .then((data) => {
-        dispatch(token(data));
-        dispatch(loggedIn());
-      });
-    resetForm();
-    navigate("/contacts");
+    try {
+      const data = await login({ email, password }).unwrap();
+      dispatch(token(data));
+      dispatch(loggedIn());
+      refetch();
+      resetForm();
+      navigate("/contacts");
+    } catch (error) {}
   };
 
   const resetForm = () => {

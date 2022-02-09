@@ -4,7 +4,7 @@ import { useRemoveContactMutation } from "redux/contacts";
 import IconButton from "components/IconButton";
 import s from "./ContactItem.module.css";
 
-function ContactItem({ name, phone, id }) {
+function ContactItem({ name, number, id }) {
   const [removeContact] = useRemoveContactMutation();
   const onRemoveContact = () => {
     removeContact(id);
@@ -13,7 +13,7 @@ function ContactItem({ name, phone, id }) {
   return (
     <li className={s.item}>
       <p>
-        {name}: {phone}
+        {name}: {number}
       </p>
       <IconButton icon="del" onClick={onRemoveContact} />
     </li>
@@ -21,6 +21,6 @@ function ContactItem({ name, phone, id }) {
 }
 ContactItem.propTypes = {
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
 export default ContactItem;

@@ -7,6 +7,7 @@ export const authApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
+        console.log("token", token);
         headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
@@ -20,7 +21,7 @@ export const authApi = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["User", "Contacts"],
     }),
     login: build.mutation({
       query: (data) => ({
@@ -28,14 +29,14 @@ export const authApi = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["User", "Contacts"],
     }),
     logout: build.mutation({
       query: () => ({
         url: `/users/logout`,
         method: "POST",
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["User", "Contacts"],
     }),
     refresh: build.query({
       query: () => ({
@@ -44,6 +45,8 @@ export const authApi = createApi({
       providesTags: ["User"],
     }),
   }),
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
 });
 
 export const {

@@ -28,12 +28,12 @@ function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
-    const phone = e.target.number.value;
+    const number = e.target.number.value;
     if (names.includes(name)) {
       toast.error(`${name} is already in contacts!`);
       return;
     }
-    addContact({ name, phone });
+    addContact({ name, number });
     toast.success(`${name} was added to contacts`);
     reset();
     navigate("/contacts");
