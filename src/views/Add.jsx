@@ -1,17 +1,14 @@
-// import PropTypes from "prop-types";
 import Section from "components/Section";
 import Container from "components/Container";
 import ContactForm from "components/ContactForm";
-function Add(props) {
+function Add() {
   return (
     <Section>
       <Container>
-        <ContactForm />
+        <ContactForm type="Add" />
       </Container>
     </Section>
   );
 }
-
-// Add.propTypes = {};
 
 export default Add;

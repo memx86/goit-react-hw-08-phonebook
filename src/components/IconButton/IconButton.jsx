@@ -1,4 +1,9 @@
-import { AiFillPlusCircle, AiFillCloseCircle } from "react-icons/ai";
+import {
+  AiFillPlusCircle,
+  AiFillCloseCircle,
+  AiOutlineEdit,
+  AiFillCheckCircle,
+} from "react-icons/ai";
 import PropTypes from "prop-types";
 import s from "./IconButton.module.css";
 
@@ -27,6 +32,30 @@ function IconButton({ type = "button", icon, onClick }) {
         >
           <AiFillCloseCircle
             style={{ width: "30", height: "30", color: "red" }}
+          />
+        </button>
+      );
+    case "edit":
+      return (
+        <button
+          type={type}
+          className={s.btn}
+          aria-label="edit contact"
+          onClick={onClick}
+        >
+          <AiOutlineEdit style={{ width: "30", height: "30", color: "gray" }} />
+        </button>
+      );
+    case "ok":
+      return (
+        <button
+          type={type}
+          className={s.btn}
+          aria-label="edit contact"
+          onClick={onClick}
+        >
+          <AiFillCheckCircle
+            style={{ width: "30", height: "30", color: "green" }}
           />
         </button>
       );

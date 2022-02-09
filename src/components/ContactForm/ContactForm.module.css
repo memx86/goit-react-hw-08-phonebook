@@ -6,9 +6,20 @@
   border: 1px solid #0080ff;
   border-radius: 10px;
 }
+.edit {
+  composes: form;
+  width: 100%;
+  border: none;
+}
 .label {
   width: 100%;
   font-size: 1.5rem;
+}
+.labelEdit {
+  composes: label;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .input {
   display: block;
@@ -24,6 +35,11 @@
 .input:not(:placeholder-shown) {
   border-color: #0080ff;
   outline: 1px solid #0080ff;
+}
+.inputEdit {
+  composes: input;
+  min-width: unset;
+  width: 70%;
 }
 .btn {
   padding: 0.5rem;

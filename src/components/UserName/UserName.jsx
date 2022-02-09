@@ -25,10 +25,10 @@ function UserName({ className = "" }) {
     if (isError) toast.error("Logout failed");
   }, [dispatch, isError, isSuccess, navigate]);
 
-  const email = data?.email;
+  const name = data?.name;
   return (
     <div className={className}>
-      {email ?? ""}
+      {name ?? ""}
       <Button text="Logout" onClick={logout} />
     </div>
   );
