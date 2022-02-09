@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useRegisterMutation, token, loggedIn } from "redux/auth";
 import { useFetchContactsQuery } from "redux/contacts";
 import s from "./RegisterForm.module.css";
@@ -36,9 +37,11 @@ function RegisterForm() {
       dispatch(token(data));
       dispatch(loggedIn());
       refetch();
-      resetForm();
       navigate("/contacts");
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Registration failed, please try again");
+    }
+    resetForm();
   };
 
   const resetForm = () => {

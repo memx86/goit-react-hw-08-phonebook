@@ -3,13 +3,19 @@ import PropTypes from "prop-types";
 import { useRemoveContactMutation } from "redux/contacts";
 import IconButton from "components/IconButton";
 import s from "./ContactItem.module.css";
+import { useEffect } from "react";
 
 function ContactItem({ name, number, id }) {
-  const [removeContact] = useRemoveContactMutation();
+  const [removeContact, { isSuccess, isError }] = useRemoveContactMutation();
   const onRemoveContact = () => {
     removeContact(id);
-    toast.info(`${name} was removed from contacts`);
   };
+  useEffect(() => {
+    if (isSuccess) toast.info(`${name} was removed from contacts`);
+    if (isError)
+      toast.error(`Can't remove ${name} from contacts, please try again`);
+  }, [isError, isSuccess, name]);
+
   return (
     <li className={s.item}>
       <p>

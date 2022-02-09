@@ -25,7 +25,7 @@ function ContactForm() {
         return;
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const number = e.target.number.value;
@@ -33,8 +33,10 @@ function ContactForm() {
       toast.error(`${name} is already in contacts!`);
       return;
     }
-    addContact({ name, number });
-    toast.success(`${name} was added to contacts`);
+    const data = await addContact({ name, number }).unwrap();
+    if (data.id) toast.success(`${name} was added to contacts`);
+    if (data.message)
+      toast.error(`Can't add ${name} to contacts, please try again`);
     reset();
     navigate("/contacts");
   };

@@ -9,19 +9,21 @@ import {
 } from "redux/auth";
 import PropTypes from "prop-types";
 import Button from "components/Button";
+import { toast } from "react-toastify";
 
 function UserName({ className = "" }) {
   const token = useSelector(getToken);
   const { data } = useRefreshQuery(null, { skip: !token });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [logout, { isSuccess }] = useLogoutMutation();
+  const [logout, { isSuccess, isError }] = useLogoutMutation();
   useEffect(() => {
     if (isSuccess) {
       dispatch(loggedOff());
       navigate("/");
     }
-  }, [dispatch, isSuccess, navigate]);
+    if (isError) toast.error("Logout failed");
+  }, [dispatch, isError, isSuccess, navigate]);
 
   const email = data?.email;
   return (

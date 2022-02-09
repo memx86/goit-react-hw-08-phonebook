@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useLoginMutation, token, loggedIn } from "redux/auth";
 import { useFetchContactsQuery } from "redux/contacts";
 import s from "./LoginForm.module.css";
@@ -32,9 +33,11 @@ function LoginForm() {
       dispatch(token(data));
       dispatch(loggedIn());
       refetch();
-      resetForm();
       navigate("/contacts");
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Login failed, please try again");
+    }
+    resetForm();
   };
 
   const resetForm = () => {
