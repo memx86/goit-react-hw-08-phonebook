@@ -1,7 +1,7 @@
 {
   "name": "goit-react-hw-08-phonebook",
   "version": "0.1.0",
-  "homepage": "https://memx86.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://memx86-goit-react-hw-08-phonebook.netlify.app/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
