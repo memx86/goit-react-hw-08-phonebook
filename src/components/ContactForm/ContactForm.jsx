@@ -8,8 +8,15 @@ import {
   useUpdateContactMutation,
 } from "redux/contacts";
 import s from "./ContactForm.module.css";
+import Button from "components/Button";
 
-function ContactForm({ type, id, initialName = "", initialNumber = "" }) {
+function ContactForm({
+  type,
+  id,
+  initialName = "",
+  initialNumber = "",
+  setEdit,
+}) {
   const [name, setName] = useState(initialName);
   const [number, setNumber] = useState(initialNumber);
   const navigate = useNavigate();
@@ -42,7 +49,7 @@ function ContactForm({ type, id, initialName = "", initialNumber = "" }) {
       toast.error(`Can't add ${name} to contacts, please try again`);
   };
   const onEditContact = async (name, number) => {
-    const data = await updateContact(id, { name, number }).unwrap();
+    const data = await updateContact({ id, name, number }).unwrap();
     if (data.id) toast.success(`${name} was successfully updated`);
     if (data.message) toast.error(`Can't update ${name}, please try again`);
   };
@@ -91,14 +98,22 @@ function ContactForm({ type, id, initialName = "", initialNumber = "" }) {
           onInput={handleInputChange}
         />
       </label>
-      <button className={s.btn} type="submit">
-        {type} contact
-      </button>
+      <span>
+        <button className={s.btn} type="submit">
+          Save
+        </button>
+        {type === "Edit" && (
+          <Button text="Cancel" onClick={() => setEdit(false)} />
+        )}
+      </span>
     </form>
   );
 }
 ContactForm.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string,
+  initialName: PropTypes.string,
+  initialNumber: PropTypes.string,
+  setEdit: PropTypes.func,
 };
 export default ContactForm;
