@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { useFetchContactsQuery, getFilter } from "redux/contacts";
+import { useFetchContactsQuery } from "redux/contacts";
+import { getFilter } from "redux/filter";
 import ContactItem from "components/ContactItem";
 import Loader from "components/Loader";
 import s from "./ContactList.module.css";

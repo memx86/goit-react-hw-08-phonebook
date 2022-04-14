@@ -1,4 +1,3 @@
-import { createReducer, createAction } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const contactsApi = createApi({
@@ -45,11 +44,6 @@ export const contactsApi = createApi({
   }),
   refetchOnFocus: true,
   refetchOnReconnect: true,
-});
-
-export const changeFilter = createAction("contacts/changeFilter");
-export const filterReducer = createReducer("", {
-  [changeFilter]: (_, { payload }) => payload,
 });
 
 export const {
