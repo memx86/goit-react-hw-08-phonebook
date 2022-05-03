@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useRegisterMutation, token, loggedIn } from "redux/auth";
+import { token, loggedIn } from "redux/auth";
+import { useRegisterMutation } from "redux/contacts";
 import s from "./RegisterForm.module.css";
 function RegisterForm() {
   const [name, setName] = useState("");
