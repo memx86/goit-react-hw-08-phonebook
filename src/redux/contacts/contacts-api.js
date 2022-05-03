@@ -20,7 +20,8 @@ export const contactsApi = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["User", "Contacts"],
+      providesTags: ["User"],
+      invalidatesTags: ["Contacts"],
     }),
     login: build.mutation({
       query: (data) => ({
@@ -28,7 +29,8 @@ export const contactsApi = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["User", "Contacts"],
+      providesTags: ["User"],
+      invalidatesTags: ["Contacts"],
     }),
     logout: build.mutation({
       query: () => ({
