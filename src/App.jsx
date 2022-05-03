@@ -8,10 +8,6 @@ import Navbar from "components/Navbar";
 import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "views/Home";
-// import Contacts from "views/Contacts";
-// import Add from "views/Add";
-// import Login from "views/Login";
-// import Register from "views/Register";
 import Loader from "components/Loader";
 
 const Contacts = lazy(() =>
@@ -50,7 +46,7 @@ function App() {
   useEffect(() => {
     if (isSuccess) dispatch(loggedIn());
   }, [dispatch, isSuccess]);
-  if (isFetching) return <div></div>;
+  if (isFetching) return <Loader />;
   return (
     <Fragment>
       <Navbar />
