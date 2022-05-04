@@ -14,7 +14,7 @@ export const contactsApi = createApi({
   }),
   tagTypes: ["User", "Contacts"],
   endpoints: (build) => ({
-    register: build.mutation({
+    signup: build.mutation({
       query: (data) => ({
         url: "/users/signup",
         method: "POST",
@@ -78,7 +78,7 @@ export const contactsApi = createApi({
 });
 
 export const {
-  useRegisterMutation,
+  useSignupMutation,
   useLoginMutation,
   useLogoutMutation,
   useRefreshQuery,

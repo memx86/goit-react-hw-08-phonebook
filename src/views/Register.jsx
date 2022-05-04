@@ -1,17 +1,15 @@
-// import PropTypes from "prop-types";
 import Section from "components/Section";
 import Container from "components/Container";
-import RegisterForm from "components/RegisterForm";
-function Register(props) {
+import AuthForm from "components/AuthForm";
+
+function Register() {
   return (
     <Section>
       <Container>
-        <RegisterForm />
+        <AuthForm type="Signup" />
       </Container>
     </Section>
   );
 }
-
-// Register.propTypes = {};
 
 export default Register;

@@ -1,17 +1,15 @@
-// import PropTypes from "prop-types";
 import Section from "components/Section";
 import Container from "components/Container";
-import LoginForm from "components/LoginForm/LoginForm";
-function Login(props) {
+import AuthForm from "components/AuthForm";
+
+function Login() {
   return (
     <Section>
       <Container>
-        <LoginForm />
+        <AuthForm />
       </Container>
     </Section>
   );
 }
-
-// Login.propTypes = {};
 
 export default Login;
