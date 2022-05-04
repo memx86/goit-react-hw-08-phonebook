@@ -44,13 +44,19 @@ function ContactForm({
       return;
     }
     const data = await addContact({ name, number }).unwrap();
-    if (data.id) toast.success(`${name} was added to contacts`);
+    if (data.id) {
+      toast.success(`${name} was added to contacts`);
+      navigate("/contacts");
+    }
     if (data.message)
       toast.error(`Can't add ${name} to contacts, please try again`);
   };
   const onEditContact = async (name, number) => {
     const data = await updateContact({ id, name, number }).unwrap();
-    if (data.id) toast.success(`${name} was successfully updated`);
+    if (data.id) {
+      toast.success(`${name} was successfully updated`);
+      navigate("/contacts");
+    }
     if (data.message) toast.error(`Can't update ${name}, please try again`);
   };
   const handleSubmit = async (e) => {
@@ -59,13 +65,6 @@ function ContactForm({
     const number = e.target.number.value;
     if (type === "Add") onAddContact(name, number);
     if (type === "Edit") onEditContact(name, number);
-    reset();
-    navigate("/contacts");
-  };
-
-  const reset = () => {
-    setName("");
-    setNumber("");
   };
 
   return (
