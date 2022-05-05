@@ -22,6 +22,11 @@ ul {
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 250ms linear;
+}
+a:hover,
+a:focus {
+  color: #0080ff;
 }
 img {
   display: block;
