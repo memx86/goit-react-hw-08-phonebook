@@ -6,10 +6,11 @@ import ContactList from "components/ContactList";
 
 function Contacts() {
   const navigate = useNavigate();
+  const navigateToAdd = () => navigate("/add");
   return (
     <Fragment>
       <h2>Contacts</h2>
-      <IconButton icon="add" onClick={() => navigate("/add")} />
+      <IconButton icon="add" onClick={navigateToAdd} />
       <Filter />
       <ContactList />
     </Fragment>

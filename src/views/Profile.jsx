@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { loggedOff, getToken } from "redux/auth";
+import { loggedOff, getIsLoggedIn } from "redux/auth";
 import { useLogoutMutation, useRefreshQuery } from "redux/contacts";
 import Button from "components/Button";
 
 export default function Profile() {
-  const token = useSelector(getToken);
-  const { data } = useRefreshQuery(null, { skip: !token });
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const { data } = useRefreshQuery(null, { skip: !isLoggedIn });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [logout, { isSuccess, isError }] = useLogoutMutation();

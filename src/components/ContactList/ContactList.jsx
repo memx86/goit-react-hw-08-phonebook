@@ -2,12 +2,16 @@ import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { useFetchContactsQuery } from "redux/contacts";
 import { getFilter } from "redux/filter";
+import { getIsLoggedIn } from "redux/auth";
 import ContactItem from "components/ContactItem";
 import Loader from "components/Loader";
 import s from "./ContactList.module.css";
 
 function ContactList() {
-  const { data, isFetching } = useFetchContactsQuery();
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const { data, isFetching } = useFetchContactsQuery(null, {
+    skip: !isLoggedIn,
+  });
   const filter = useSelector(getFilter)?.toLowerCase().trim();
   const contacts = data?.filter(({ name }) =>
     name.toLowerCase().includes(filter)
