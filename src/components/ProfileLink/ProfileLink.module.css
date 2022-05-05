@@ -1,0 +1,17 @@
+.circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: unset;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #0080ff;
+  border: 1px solid #0080ff;
+  transition: color 250ms linear, background-color 250ms linear;
+}
+.circle:hover,
+.circle:focus {
+  background-color: #fff;
+}

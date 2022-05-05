@@ -10,6 +10,8 @@ import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "views/Home";
 import Loader from "components/Loader";
+import Section from "components/Section";
+import Container from "components/Container";
 
 const Contacts = lazy(() =>
   import(
@@ -23,6 +25,13 @@ const Add = lazy(() =>
     /* webpackChunkName: "Add" */
     /* webpackPrefetch: true */
     "./views/Add"
+  )
+);
+const Profile = lazy(() =>
+  import(
+    /* webpackChunkName: "Profile" */
+    /* webpackPrefetch: true */
+    "./views/Profile"
   )
 );
 const Login = lazy(() =>
@@ -55,42 +64,54 @@ function App() {
         <Loader />
       ) : (
         <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="contacts"
-              element={
-                <PrivateRoute>
-                  <Contacts />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="add"
-              element={
-                <PrivateRoute>
-                  <Add />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="login"
-              element={
-                <PublicRoute>
-                  <Login />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="register"
-              element={
-                <PublicRoute>
-                  <Register />
-                </PublicRoute>
-              }
-            />
-            <Route path="*" element={<Home />} />
-          </Routes>
+          <Section>
+            <Container>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                  path="contacts"
+                  element={
+                    <PrivateRoute>
+                      <Contacts />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="add"
+                  element={
+                    <PrivateRoute>
+                      <Add />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="profile"
+                  element={
+                    <PrivateRoute>
+                      <Profile />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="login"
+                  element={
+                    <PublicRoute>
+                      <Login />
+                    </PublicRoute>
+                  }
+                />
+                <Route
+                  path="register"
+                  element={
+                    <PublicRoute>
+                      <Register />
+                    </PublicRoute>
+                  }
+                />
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </Container>
+          </Section>
         </Suspense>
       )}
       <ToastContainer

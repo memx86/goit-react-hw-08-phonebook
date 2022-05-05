@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Container from "components/Container";
-import UserName from "components/UserName";
+import ProfileLink from "components/ProfileLink";
 import { getIsLoggedIn } from "redux/auth";
 import s from "./Navbar.module.css";
 
@@ -42,7 +42,7 @@ function NavBar() {
             </div>
           )}
 
-          {isLoggedIn && <UserName className={s.right} />}
+          {isLoggedIn && <ProfileLink className={s.right} />}
         </nav>
       </Container>
     </header>
