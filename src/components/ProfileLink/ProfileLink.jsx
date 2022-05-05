@@ -10,14 +10,14 @@ function ProfileLink({ className = "" }) {
   const { data } = useRefreshQuery(null, { skip: !token });
 
   const name = data?.name ?? "";
-  const letter = name.split("").at(0).toUpperCase();
+  const [letter] = name.split("");
   return (
     <Link
       to="/profile"
       aria-label={`${name} profile`}
       className={`${className} ${s.circle}`}
     >
-      {letter}
+      {letter?.toUpperCase()}
     </Link>
   );
 }
