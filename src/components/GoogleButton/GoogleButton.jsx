@@ -52,6 +52,7 @@ function GoogleButton({ type = TYPES.LOGIN }) {
     const { name, email } = jwt_decode(token);
     const password = HmacSHA512(email, GOOGLE_CLIENT_ID).toString();
     const data = TYPES.LOGIN ? { email, password } : { name, email, password };
+
     await handleData(data);
   };
 
