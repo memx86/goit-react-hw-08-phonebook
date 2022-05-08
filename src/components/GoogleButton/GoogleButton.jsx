@@ -10,6 +10,7 @@ import { useLoginMutation, useSignupMutation } from "redux/contacts";
 import Button from "components/Button";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const SECRET = process.env.REACT_APP_JWT_SECRET;
 const TYPES = {
   LOGIN: "Login",
   SIGNUP: "Signup",
@@ -50,7 +51,7 @@ function GoogleButton({ type = TYPES.LOGIN }) {
     if (!res.clientId || !res.credential) return;
     const token = res.credential;
     const { name, email } = jwt_decode(token);
-    const password = HmacSHA512(email, GOOGLE_CLIENT_ID).toString();
+    const password = HmacSHA512(email, SECRET).toString();
     const data = TYPES.LOGIN ? { email, password } : { name, email, password };
 
     await handleData(data);
