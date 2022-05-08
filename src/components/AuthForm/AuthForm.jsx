@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { PropTypes } from "prop-types";
 import { token, loggedIn } from "redux/auth";
 import { useLoginMutation, useSignupMutation } from "redux/contacts";
-
 import s from "./AuthForm.module.css";
 
 const TYPES = {

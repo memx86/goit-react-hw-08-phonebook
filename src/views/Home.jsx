@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "redux/auth";
 import { useRefreshQuery } from "redux/contacts";
 import AuthForm from "components/AuthForm";
+import GoogleButton from "components/GoogleButton";
 
 function Home() {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -15,6 +16,7 @@ function Home() {
         {!isLoggedIn && (
           <Fragment>
             <p>Create an account or log in to use app</p>
+            <GoogleButton type="Signup" />
             <AuthForm type="Signup" />
             <Link to="/login">Already have an account?</Link>
           </Fragment>

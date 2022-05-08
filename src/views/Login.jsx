@@ -1,7 +1,14 @@
+import { Fragment } from "react";
+import GoogleButton from "components/GoogleButton";
 import AuthForm from "components/AuthForm";
 
 function Login() {
-  return <AuthForm />;
+  return (
+    <Fragment>
+      <GoogleButton />
+      <AuthForm />
+    </Fragment>
+  );
 }
 
 export default Login;
