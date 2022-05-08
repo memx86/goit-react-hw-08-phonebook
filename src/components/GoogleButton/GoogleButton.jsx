@@ -34,7 +34,7 @@ function GoogleButton({ type = TYPES.LOGIN }) {
   };
 
   const mutation = type === TYPES.LOGIN ? login : signup;
-  console.log(window.google);
+
   const handleData = async (data) => {
     try {
       const response = await mutation(data).unwrap();
