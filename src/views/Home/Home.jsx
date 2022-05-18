@@ -6,6 +6,8 @@ import { useRefreshQuery } from "redux/contacts";
 import AuthForm from "components/AuthForm";
 import GoogleButton from "components/GoogleButton";
 
+import s from "./Home.module.css";
+
 function Home() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const { data } = useRefreshQuery(null, { skip: !isLoggedIn });
@@ -16,7 +18,7 @@ function Home() {
         {!isLoggedIn && (
           <Fragment>
             <p>Create an account or log in to use app</p>
-            <GoogleButton type="Signup" />
+            <GoogleButton type="Signup" className={s.button} />
             <AuthForm type="Signup" />
             <Link to="/login">Already have an account?</Link>
           </Fragment>

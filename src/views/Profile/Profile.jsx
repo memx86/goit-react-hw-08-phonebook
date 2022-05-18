@@ -6,6 +6,8 @@ import { loggedOff, getIsLoggedIn } from "redux/auth";
 import { useLogoutMutation, useRefreshQuery } from "redux/contacts";
 import Button from "components/Button";
 
+import s from "./Profile.module.css";
+
 export default function Profile() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const { data } = useRefreshQuery(null, { skip: !isLoggedIn });
@@ -25,7 +27,7 @@ export default function Profile() {
   return (
     <div>
       <h1>{name} profile</h1>
-      <Button text="Logout" onClick={logout} className="marginTop" />
+      <Button text="Logout" onClick={logout} className={s.button} />
     </div>
   );
 }

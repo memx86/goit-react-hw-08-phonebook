@@ -20,12 +20,3 @@
   color: #000;
   border-color: #0080ff;
 }
-.center {
-  composes: btn;
-  margin-left: auto;
-  margin-right: auto;
-}
-.marginTop {
-  composes: btn;
-  margin-top: 1rem;
-}

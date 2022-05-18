@@ -16,7 +16,7 @@ const TYPES = {
   SIGNUP: "Signup",
 };
 
-function GoogleButton({ type = TYPES.LOGIN }) {
+function GoogleButton({ type = TYPES.LOGIN, className }) {
   const [gsiScriptLoaded, setGsiScriptLoaded] = useState(false);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const navigate = useNavigate();
@@ -77,11 +77,18 @@ function GoogleButton({ type = TYPES.LOGIN }) {
 
   const googleId = () => window.google?.accounts.id.prompt();
 
-  return <Button text={`${type} with Google`} onClick={googleId} />;
+  return (
+    <Button
+      text={`${type} with Google`}
+      onClick={googleId}
+      className={className}
+    />
+  );
 }
 
 GoogleButton.propTypes = {
   type: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default GoogleButton;

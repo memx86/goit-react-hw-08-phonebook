@@ -31,7 +31,7 @@ const Profile = lazy(() =>
   import(
     /* webpackChunkName: "Profile" */
     /* webpackPrefetch: true */
-    "./views/Profile"
+    "./views/Profile/Profile"
   )
 );
 const Login = lazy(() =>

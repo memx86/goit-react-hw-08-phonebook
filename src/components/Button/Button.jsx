@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import s from "./Button.module.css";
-function Button({ text, onClick, type = "button", className = "btn" }) {
+function Button({ text, onClick, type = "button", className }) {
   return (
-    <button type={type} className={s[className]} onClick={onClick}>
+    <button type={type} className={`${s.btn} ${className}`} onClick={onClick}>
       {text}
     </button>
   );
